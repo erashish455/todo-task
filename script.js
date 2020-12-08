@@ -1,44 +1,57 @@
-function addList(value) {
-    let a = document.getElementById('input').value
-    if (a == '' && value == 'a') {
-        alert("You must write something!");
-    } else {
-        if (value == 'b') {
-            document.getElementById('list').innerHTML = ''
-            b = ''
-            document.getElementById('input').value = ''
-        } else {
-            var parent = document.getElementById('list');
-            let child = document.createElement('li')
-            var button = document.createElement('button')
-            var button2 = document.createElement('button')
-
-            button.setAttribute('class', 'btn btn-outline-danger')
-            button2.setAttribute('class', 'btn btn-outline-danger')
-
-            child.innerHTML = a
-            button.innerHTML = 'X'
-            button2.innerHTML = 'edit'
-            child.append(button, button2)
-            parent.append(child)
-            button.setAttribute('onClick', "this.parentNode.parentNode.removeChild(this.parentNode);")
-            button2.setAttribute('onClick', "edit('this')")
-            document.getElementById('input').value = null
-        }
-
-    }
+//user enters items to list, items are added to list
+$("#formToDo").on('submit', function(e) {
+        e.preventDefault();
+        var userInput = $("#new-todo-item").val()
+        $("#listContainer").append("<li>" + userInput + '<input type="button" class="edit" value="Edit">' + '<input type="button" class=" delete" value="Delete">' + "</li>")
+        $('#new-todo-item').val('');
+        updateListCount();
+    })
+    //when changes are made (items added or removed) the amount of tasks is reflected with each change
+function updateListCount() {
+    var count = $("li").length;
+    $("h3").text("You have " + count + " task(s) left!");
 }
+//make delete button remove list item
 
-function edit(e) {
-    console.log('andar aaya')
-    var temp = this.parent
-    console.log(temp)
-        // var temp2 = prompt(temp)
-        // this.innerHTML = temp2
+$('#listContainer').on('click', '.delete', function() {
+    $(this).parent().remove();
+    updateListCount();
+});
+//clear all items in list
+$("#clearBtn").click(function() {
+    $("li").remove();
+});
 
-}
+//mark list items as markComplete
+$(document).ready(function() {
+    $("ul").on("click", "li", function() {
+            $(this).toggleClass("markComplete");
 
-function swap() {
-    document.
-}
-document.getElementById('.notDone li').addEventListener('onclick', swap())
+        })
+        //hover that will show and hide appended buttons
+    $("ul").on("mouseleave", "li", function() {
+        $(".delete, .edit").hide();
+        $(".delete, .edit").addClass("new");
+    });
+
+
+    $("ul").on("mouseenter", "li", function() {
+        $(".delete, .edit").show();
+        $(".delete, .edit").addClass("new");
+    });
+
+});
+
+//clear the items with new class--that is mark completed
+$("#clearDone").click(function() {
+    $("li.markComplete").remove();
+    updateListCount();
+});
+
+//EDIT TASK
+//user clicks on edit button
+$(document).on("click", '.edit', function() {
+    // make the span editable and focus it
+    $(this).parent().prop("contenteditable", true).focus();
+    return false;
+});

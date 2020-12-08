@@ -1,50 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Your description goes here">
+    <meta name="keywords" content="one, two, three">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Blank Template</title>
+
+    <!-- external CSS link -->
+
+
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Open+Sans:800,800" rel="stylesheet">
+
 </head>
 
 <body>
-    <div class="body container text-center mt-5">
-        <h2 class="text-primary">To-Do list</h2>
-        <input type="text" id="input">
-        <button class="btn btn-primary " type="submit" onclick="addList('a')"></i>Add List</button>
-        <button class="btn btn-danger" type="submit" onclick="addList('b')">clear</button>
-    </div>
-    <h2>Task to work on</h2>
-    <div id="notDone">
-        <ol id="list" class="container-fluid list border mt-5">
+    <div id="container">
+        <header></header>
+        <section id="main">
+            <h1>To Do List</h1>
+
+            <form id="formToDo" class="form-add-todo">
+
+                <input type="text" id="new-todo-item" class="new-todo-item" name="todo" placeholder="Add Task . . ." />
+                <input type="submit" id="add-todo-item" class="add-todo-item" value="+" />
+
+            </form>
+
+            <section>
+                <ul id="listContainer" class="todo-list">
+                </ul>
+                <button id="clearBtn" class="clearBtn" type="button" name="button"> Clear List</button>
+                <button id="clearDone" class="clearBtn" type="button" name="button"> Clear Completed</button>
+                <h3></h3>
+            </section>
+        </section>
 
 
-
-
-        </ol>
-
-    </div>
-    <h2>Task completed</h2>
-    <div id="done">
-        <ol id="list" class="container-fluid list border mt-5">
-
-
-
-
-        </ol>
 
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- #container -->
+
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 
 </html>
